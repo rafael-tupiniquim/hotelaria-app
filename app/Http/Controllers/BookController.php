@@ -3,17 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-//use Illuminate\View\View;
-//require __DIR__.'/../vendor/autoload.php';
+use App\Models\ModelBook;
+use App\Models\User;
 
 class BookController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+    private $objUser;
+    private $objBook;
+
+    public function __construct()
+    {   
+        $this->objUser=new User();
+        $this->objBook=new ModelBook();
+    }
+
     public function index()
     {
-        return view('index');
+        dd($this->objUser->find(1)->relBooks);
+        //dd($this->objBook);
     }
 
     /**
